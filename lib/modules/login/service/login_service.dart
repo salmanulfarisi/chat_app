@@ -1,0 +1,38 @@
+import 'dart:async';
+import 'dart:developer';
+import 'dart:io';
+
+import 'package:chat_app/core/value/config.dart';
+import 'package:chat_app/data/model/login/login_model.dart';
+import 'package:chat_app/data/model/login/login_response.dart';
+import 'package:dio/dio.dart';
+
+class LoginService {
+  final dio = Dio(BaseOptions(baseUrl: Config.apiUrl));
+  Future<LoginResponseModel?> loginUser(LoginModel model) async {
+    try {
+      Response response = await dio.post(Config.loginUrl, data: model.toJson());
+      if (response.statusCode! >= 200 && response.statusCode! <= 299) {
+        log(response.data.toString());
+        log(response.statusCode.toString());
+        return LoginResponseModel.fromJson(response.data);
+      } else {
+        return LoginResponseModel.fromJson(response.data);
+      }
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 400) {
+        log(e.response!.data.toString());
+      } else {
+        log(e.message);
+      }
+      log(e.toString());
+    } on TimeoutException catch (e) {
+      log(e.toString());
+    } on SocketException catch (e) {
+      log(e.toString());
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
+}
