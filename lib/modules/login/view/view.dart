@@ -67,7 +67,7 @@ class LoginView extends GetView<LoginController> {
                   SizedBox(height: 5.0.wp),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
+                      primary: Theme.of(context).primaryColor,
                       padding: EdgeInsets.symmetric(horizontal: 20.0.wp),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),

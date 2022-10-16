@@ -1,5 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:chat_app/modules/contacts/bindings/bindings.dart';
+import 'package:chat_app/modules/contacts/view/view.dart';
 import 'package:chat_app/modules/home/bindings/bindings.dart';
 import 'package:chat_app/modules/home/view/view.dart';
 import 'package:chat_app/modules/login/bindings/bindings.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: Routes.WELCOME,
       page: () => const WelcomeView(),
       binding: WelcomeBindings(),
+    ),
+    GetPage(
+      name: Routes.CONTACT,
+      page: () => const ContactView(),
+      binding: ContactsBindings(),
     ),
   ];
 }
