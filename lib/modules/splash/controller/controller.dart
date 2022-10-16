@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:chat_app/modules/login/view/view.dart';
+import 'package:chat_app/modules/welcome/view/view.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
@@ -8,6 +8,6 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    Timer(const Duration(seconds: 6), () => Get.off(() => const LoginView()));
+    Timer(const Duration(seconds: 6), () => Get.off(() => const WelcomeView()));
   }
 }
