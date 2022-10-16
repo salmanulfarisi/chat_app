@@ -1,4 +1,5 @@
-import 'package:chat_app/modules/splash/view/view.dart';
+import 'package:chat_app/core/utils/themes.dart';
+import 'package:chat_app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,10 +16,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Chat App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const SplashView(),
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
+      darkTheme: Themes.darkMode,
+      theme: Themes.lightMode,
     );
   }
 }

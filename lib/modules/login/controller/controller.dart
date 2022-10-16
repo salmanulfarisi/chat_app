@@ -1,5 +1,6 @@
 import 'package:chat_app/data/model/login/login_model.dart';
 import 'package:chat_app/data/model/login/login_response.dart';
+import 'package:chat_app/modules/home/view/view.dart';
 import 'package:chat_app/modules/login/service/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -55,6 +56,7 @@ class LoginController extends GetxController {
     LoginResponseModel? response = await LoginService().loginUser(data);
     if (response != null) {
       Get.snackbar("Login", "${response.name} Login Successfully");
+      Get.offAll(() => const Homeview());
     } else {
       Get.snackbar("Login", "Something went wrong");
     }

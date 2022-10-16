@@ -1,5 +1,6 @@
 import 'package:chat_app/data/model/signup/signup_model.dart';
 import 'package:chat_app/data/model/signup/signup_response_model.dart';
+import 'package:chat_app/modules/home/view/view.dart';
 import 'package:chat_app/modules/signup/service/api_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -60,6 +61,7 @@ class SignupController extends GetxController {
     SignupResponseModel? response = await SignUpService().signupUser(data);
     if (response != null) {
       Get.snackbar("Success", "${response.name} your account has been created");
+      Get.offAll(() => const Homeview());
     } else {
       Get.snackbar("Error", "Something went wrong");
     }
