@@ -7,14 +7,18 @@ import 'package:chat_app/core/value/config.dart';
 import 'package:chat_app/data/model/signup/signup_model.dart';
 import 'package:chat_app/data/model/signup/signup_response_model.dart';
 import 'package:dio/dio.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SignUpService {
+  final getStorage = GetStorage();
   final dio = Dio(BaseOptions(baseUrl: Config.apiUrl));
   Future<SignupResponseModel?> signupUser(SignupModel model) async {
     try {
       final response = await dio.post(Config.registerUrl, data: model.toJson());
       log(response.data.toString());
       if (response.statusCode! >= 200 && response.statusCode! <= 299) {
+        getStorage.write('id', response.data['_id']);
+        getStorage.write('token', response.data['token']);
         log(response.data.toString());
         log(response.statusCode.toString());
         return SignupResponseModel.fromJson(response.data);

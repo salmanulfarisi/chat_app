@@ -4,6 +4,8 @@ import 'package:chat_app/modules/contacts/bindings/bindings.dart';
 import 'package:chat_app/modules/contacts/view/view.dart';
 import 'package:chat_app/modules/home/bindings/bindings.dart';
 import 'package:chat_app/modules/home/view/view.dart';
+import 'package:chat_app/modules/individual_chat.dart/bindings/bindings.dart';
+import 'package:chat_app/modules/individual_chat.dart/view/view.dart';
 import 'package:chat_app/modules/login/bindings/bindings.dart';
 import 'package:chat_app/modules/login/view/view.dart';
 import 'package:chat_app/modules/signup/bindings/bindings.dart';
@@ -51,5 +53,9 @@ class AppPages {
       page: () => const ContactView(),
       binding: ContactsBindings(),
     ),
+    GetPage(
+        name: Routes.INDIVIDUAL,
+        page: () => const IndividualView(),
+        binding: IndividualBindings()),
   ];
 }
